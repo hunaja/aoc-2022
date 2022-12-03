@@ -1,14 +1,14 @@
 import fs from "fs/promises";
 
-const inputBuffer = await fs.readFile("both.input")
+const inputBuffer = await fs.readFile("both.input");
 const input = inputBuffer.toString();
 
 const DRAW_POINTS = 3;
 const WIN_POINTS = 6;
 
-const shapeScores = { "R": 1, "P": 2, "S": 3 };
+const shapeScores = { R: 1, P: 2, S: 3 };
 
-const result = input.split('\n')
+const result = input.split("\n")
     .filter((val) => val.trim())
     .map((val) => {
         let [oppShape, myShape] = val.split(" ");

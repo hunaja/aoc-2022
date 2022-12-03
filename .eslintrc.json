@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb",
+    "parser": "@babel/eslint-parser",
+    "rules": {
+        "quotes": ["error", "double"],
+        "indent": ["error", 4],
+        "no-console": 0
+    },
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "requireConfigFile": false
+    }
+}

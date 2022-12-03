@@ -1,9 +1,9 @@
 import fs from "fs/promises";
 
-const inputBuffer = await fs.readFile("both.input")
+const inputBuffer = await fs.readFile("both.input");
 const input = inputBuffer.toString();
 
-const result = input.split('\n')
+const result = input.split("\n")
     .reduce((acc, valStr) => {
         if (!valStr.trim()) {
             acc.push(0);

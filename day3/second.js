@@ -1,11 +1,11 @@
 import fs from "fs/promises";
 
-const inputBuffer = await fs.readFile("both.input")
+const inputBuffer = await fs.readFile("both.input");
 const input = inputBuffer.toString();
 
 const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const result = input.split('\n')
+const result = input.split("\n")
     .reduce((acc, val, i) => {
         if (i % 3 === 0) acc.push([]);
         acc.at(-1).push(val);
