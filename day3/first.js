@@ -1,18 +1,13 @@
-import fs from "fs/promises";
-
-const inputBuffer = await fs.readFile("both.input");
-const input = inputBuffer.toString();
-
 const CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const result = input.split("\n")
+module.exports = (arr) => arr
     .reduce((acc, val) => {
+        if (val % 2 === 1) throw new Error();
+
         const half = val.length / 2;
         const firstPart = val.slice(0, half);
-        const lastPart = val.slice(-half);
+        const lastPart = new Set(val.slice(-half));
 
-        const char = [...firstPart].find((c) => lastPart.includes(c));
+        const char = [...firstPart].find((c) => lastPart.has(c));
         return acc + CHARS.indexOf(char) + 1;
     }, 0);
-
-console.log(result);

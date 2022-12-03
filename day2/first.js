@@ -1,14 +1,9 @@
-import fs from "fs/promises";
-
-const inputBuffer = await fs.readFile("both.input");
-const input = inputBuffer.toString();
-
 const DRAW_POINTS = 3;
 const WIN_POINTS = 6;
 
 const shapeScores = { R: 1, P: 2, S: 3 };
 
-const result = input.split("\n")
+module.exports = (arr) => arr
     .filter((val) => val.trim())
     .map((val) => {
         let [oppShape, myShape] = val.split(" ");
@@ -46,8 +41,8 @@ const result = input.split("\n")
 
         const draw = oppShape === myShape;
         const win = (myShape === "R" && oppShape === "S")
-            || (myShape === "S" && oppShape === "P")
-            || (myShape === "P" && oppShape === "R");
+                || (myShape === "S" && oppShape === "P")
+                || (myShape === "P" && oppShape === "R");
 
         if (win) {
             score += WIN_POINTS;
@@ -58,5 +53,3 @@ const result = input.split("\n")
         return score;
     })
     .reduce((acc, val) => acc + val, 0);
-
-console.log(result);

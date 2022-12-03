@@ -1,14 +1,9 @@
-import fs from "fs/promises";
-
-const inputBuffer = await fs.readFile("both.input");
-const input = inputBuffer.toString();
-
 const DRAW_POINTS = 3;
 const WIN_POINTS = 6;
 
 const shapeScores = { R: 1, P: 2, S: 3 };
 
-const result = input.split("\n")
+module.exports = (arr) => arr
     .filter((val) => val.trim())
     .map((val) => {
         const data = val.split(" ");
@@ -48,12 +43,12 @@ const result = input.split("\n")
             }
             break;
 
-        // The round must end in a draw
+            // The round must end in a draw
         case "Y":
             score = shapeScores[oppShape] + DRAW_POINTS;
             break;
 
-        // I need to win...
+            // I need to win...
         case "Z":
             switch (oppShape) {
             case "R":
@@ -79,5 +74,3 @@ const result = input.split("\n")
         return score;
     })
     .reduce((acc, val) => acc + val, 0);
-
-console.log(result);

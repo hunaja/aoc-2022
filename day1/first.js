@@ -1,9 +1,4 @@
-import fs from "fs/promises";
-
-const inputBuffer = await fs.readFile("both.input");
-const input = inputBuffer.toString();
-
-const result = input.split("\n")
+module.exports = (arr) => arr
     .reduce((acc, valStr) => {
         if (!valStr.trim()) {
             acc.push(0);
@@ -14,5 +9,3 @@ const result = input.split("\n")
         return acc;
     }, [0])
     .sort((a, b) => b - a)[0];
-
-console.log(result);
